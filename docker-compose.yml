@@ -1,9 +1,18 @@
+version: '3.8'
+
 services:
   nats:
     image: nats:latest
     ports:
       - "4222:4222"  # Client connections
       - "8222:8222"  # HTTP monitoring
+      - "6222:6222"  # Clustering
+    command: ["-js", "-m", "8222"]
+    networks:
+      - nats-network
+
+networks:
+  nats-network:
       - "6222:6222"  # Cluster connections
     command: ["-js", "-m", "8222"]
     networks:

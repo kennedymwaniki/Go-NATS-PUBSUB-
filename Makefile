@@ -16,6 +16,10 @@ run-publisher: ## Run the publisher
 run-subscriber: ## Run the subscriber
 	@go run cmd/subscriber/main.go
 
+test: ## Run tests
+	@go test -v ./...
+
+fmt: ## Format code
 start-nats: ## Start NATS server using Docker Compose
 	@docker-compose up -d
 	@echo "NATS server started. Monitoring available at http://localhost:8222"
@@ -36,6 +40,23 @@ fmt: ## Format Go code
 vet: ## Run go vet
 	@go vet ./...
 
+clean: ## Clean build artifacts
+	@rm -rf bin/
+	@echo "✓ Cleaned build artifacts"
+
+docker-up: ## Start NATS server using Docker Compose
+	@docker-compose up -d
+	@echo "✓ NATS server started"
+
+docker-down: ## Stop NATS server
+	@docker-compose down
+	@echo "✓ NATS server stopped"
+
+deps: ## Download dependencies
+	@go mod download
+	@echo "✓ Dependencies downloaded"
+
+all: fmt vet build ## Format, vet, and build
 deps: ## Download dependencies
 	@go mod download
 	@go mod tidy
