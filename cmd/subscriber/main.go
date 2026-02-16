@@ -1,8 +1,6 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -119,14 +117,4 @@ func handleRepairRequestNotification(n *models.RepairRequestNotification) {
 	// - Send cost estimate to tenant
 	// - Update property maintenance records
 	log.Println("\n✓ Repair request notification processed")
-}
-
-// Helper function to pretty print JSON
-func prettyPrintJSON(v interface{}) {
-	data, err := json.MarshalIndent(v, "", "  ")
-	if err != nil {
-		log.Printf("Error marshaling JSON: %v", err)
-		return
-	}
-	fmt.Println(string(data))
 }

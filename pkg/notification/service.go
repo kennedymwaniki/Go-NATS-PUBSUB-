@@ -6,6 +6,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/kennedymwaniki/Go-NATS-PUBSUB-/pkg/models"
 	"github.com/nats-io/nats.go"
 )
@@ -152,5 +153,5 @@ func (s *Service) Subscribe(handler func(subject string, notification interface{
 
 // generateID generates a unique ID for notifications
 func generateID() string {
-	return fmt.Sprintf("%d", time.Now().UnixNano())
+	return uuid.New().String()
 }
