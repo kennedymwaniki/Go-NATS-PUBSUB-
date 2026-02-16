@@ -21,18 +21,22 @@ go.work
 # Dependency directories
 vendor/
 
-# IDE specific files
-.idea/
+# IDEs
 .vscode/
+.idea/
 *.swp
 *.swo
 *~
 
-# OS specific files
+# OS
 .DS_Store
 Thumbs.db
 
+# Environment variables
+.env
+.env.local
+
 # Temporary files
-/tmp/
+tmp/
+temp/
 *.tmp
-*.log

@@ -13,4 +13,11 @@ services:
 
 networks:
   nats-network:
+      - "6222:6222"  # Cluster connections
+    command: ["-js", "-m", "8222"]
+    networks:
+      - rental-network
+
+networks:
+  rental-network:
     driver: bridge
